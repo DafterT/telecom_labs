@@ -11,4 +11,5 @@ def stretch(wave, factor):
     wave.framerate /= factor
 
 stretch(wave, 0.5)
+wave.plot()
 wave.make_audio()
