@@ -12,16 +12,20 @@ spectro.plot(high=4200)
 decorate(xlabel='Time (s)', 
         ylabel='Frequency (Hz)')
 # %%
-def get_frequency(wave, start, duration=0.01):
+def estimate_fundamental(wave, start, duration=0.01, low = 50, high = 150):
     segment = wave.segment(start=start, duration=duration)
     lags, corrs = autocorr(segment)
-    low, high = 50, 150
     lag = np.array(corrs[low:high]).argmax() + low
     return 1 / (lag / segment.framerate)
 
 x = np.arange(0, wave.duration, 0.05)
-y = [get_frequency(wave, start) for start in x]
+y = [estimate_fundamental(wave, start) for start in x]
 plt.plot(x, y)
+decorate(xlabel='Time (s)', 
+        ylabel='Frequency (Hz)')
+# %%
+plt.plot(x, y, color='white')
+spectro.plot(high=4200)
 decorate(xlabel='Time (s)', 
         ylabel='Frequency (Hz)')
 # %%
