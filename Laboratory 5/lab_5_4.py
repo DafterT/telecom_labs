@@ -11,7 +11,7 @@ gram = wave.make_spectrogram(seg_length=1024)
 gram.plot(high=3000)
 decorate(xlabel='Time (s)', ylabel='Frequency (Hz)')
 # %%
-start = 2.0
+start = 4.0
 duration = 0.5
 segment = wave.segment(start=start, duration=duration)
 segment.make_audio()
@@ -22,8 +22,7 @@ decorate(xlabel='Frequency (Hz)', ylabel='Amplitude')
 # %%
 spectrum.peaks()[:10]
 # %%
-TriangleSignal(freq=464).make_wave(duration=0.5).make_audio()
-segment.make_audio()
+TriangleSignal(freq=414).make_wave(duration=0.5).make_audio()
 # %%
 def autocorr(segment):
     corrs = np.correlate(segment.ys, segment.ys, mode='same')
@@ -46,7 +45,7 @@ def find_frequency(corrs, low, high):
     frequency = 1 / period
     return frequency
 
-find_frequency(corrs, 80, 100)
+find_frequency(corrs, 80, 125)
 # %%
 spectrum2 = segment.make_spectrum()
 spectrum2.high_pass(600)
@@ -59,7 +58,7 @@ corrs = autocorr(segment2)
 plt.plot(corrs[:200])
 decorate(xlabel='Lag', ylabel='Correlation', ylim=[-1.05, 1.05])
 # %%
-find_frequency(corrs, 80, 100)
+find_frequency(corrs, 80, 125)
 # %%
 find_frequency(corrs, 20, 50)
 # %%
@@ -71,13 +70,15 @@ spectrum4.low_pass(1200)
 spectrum4.plot(high=3000)
 decorate(xlabel='Frequency (Hz)', ylabel='Amplitude')
 # %%
+spectrum4.peaks()[:5]
+# %%
 segment4 = spectrum4.make_wave()
 segment4.make_audio()
 # %%
-TriangleSignal(freq=928).make_wave(duration=0.5).make_audio()
+TriangleSignal(freq=830).make_wave(duration=0.5).make_audio()
 # %%
 corrs = autocorr(segment4)
 plt.plot(corrs[:200])
 decorate(xlabel='Lag', ylabel='Correlation', ylim=[-1.05, 1.05])
 # %%
-find_frequency(corrs, 30, 50)
+find_frequency(corrs, 25, 75)
