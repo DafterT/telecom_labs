@@ -11,6 +11,7 @@ spectro = wave.make_spectrogram(seg_length=1024)
 spectro.plot(high=4200)
 decorate(xlabel='Time (s)', 
         ylabel='Frequency (Hz)')
+wave.make_audio()
 # %%
 def estimate_fundamental(wave, start, duration=0.01, low = 50, high = 150):
     segment = wave.segment(start=start, duration=duration)
