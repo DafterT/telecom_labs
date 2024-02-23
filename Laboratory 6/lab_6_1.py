@@ -64,7 +64,7 @@ plot_bests(ns, bests2)
 import scipy.fftpack
 
 def scipy_dct(ys, fs, ts):
-    return scipy.fftpack.dct(ys, type=3)
+    return scipy.fftpack.dct(ys, type=2)
 # %%
 bests3 = run_speed_test(ns, scipy_dct)
 plot_bests(ns, bests3)
