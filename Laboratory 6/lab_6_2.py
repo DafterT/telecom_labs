@@ -8,11 +8,10 @@ wave.make_audio()
 # %%
 segment = wave.segment(start=1.2, duration=0.5)
 segment.normalize()
-segment.make_audio()
-# %%
 seg_dct = segment.make_dct()
 seg_dct.plot(high=4000)
 decorate(xlabel='Frequency (Hz)', ylabel='DCT')
+segment.make_audio()
 # %%
 def compress(dct, thresh=1):
     count = 0
@@ -25,10 +24,9 @@ def compress(dct, thresh=1):
     print(count, n, 100 * count / n, sep='\t')
 
 # %%
-seg_dct = segment.make_dct()
 compress(seg_dct, thresh=10)
 seg_dct.plot(high=4000)
-# %%
+decorate(xlabel='Frequency (Hz)', ylabel='DCT')
 seg2 = seg_dct.make_wave()
 seg2.make_audio()
 # %%
@@ -56,7 +54,7 @@ def make_dct_spectrogram(wave, seg_length):
 # %%
 spectro = make_dct_spectrogram(wave, seg_length=1024)
 for t, dct in sorted(spectro.spec_map.items()):
-    compress(dct, thresh=1)
+    compress(dct, thresh=10)
 # %%
 wave2 = spectro.make_wave()
 wave2.make_audio()
