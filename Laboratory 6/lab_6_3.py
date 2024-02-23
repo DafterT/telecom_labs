@@ -8,10 +8,9 @@ from thinkdsp import SawtoothSignal
 
 signal = SawtoothSignal(freq=500, offset=0)
 wave = signal.make_wave(duration=0.5, framerate=40000)
-wave.make_audio()
-# %%
 wave.segment(duration=0.01).plot()
 decorate(xlabel='Time (s)')
+wave.make_audio()
 # %%
 spectrum = wave.make_spectrum()
 spectrum.plot()
@@ -24,6 +23,7 @@ def plot_angle(spectrum, thresh=1):
     plt.plot(spectrum.fs, angles, 'x')
     decorate(xlabel='Frequency (Hz)', 
              ylabel='Phase (radian)')
+
 plot_angle(spectrum, thresh=0)
 # %%
 plot_angle(spectrum, thresh=1)
@@ -40,7 +40,7 @@ def plot_three(spectrum, thresh=1):
     wave.normalize()
     wave.segment(duration=0.01).plot()
     display(wave.make_audio())
-# %%
+
 plot_three(spectrum)
 # %%
 def zero_angle(spectrum):
@@ -69,7 +69,7 @@ plot_three(spectrum4)
 wave = read_wave('code_120994__thirsk__120-oboe.wav')
 wave.make_audio()
 # %%
-segment = wave.segment(start=1, duration=0.9)
+segment = wave.segment(start=1.1, duration=0.9)
 spectrum = segment.make_spectrum()
 plot_three(spectrum, thresh=50)
 # %%
@@ -101,7 +101,7 @@ plot_three(spectrum4, thresh=50)
 spectrum.high_pass(600)
 spectrum.plot(high=4000)
 # %%
-plot_three(spectrum2, thresh=50)
+plot_three(spectrum, thresh=50)
 # %%
 spectrum2 = zero_angle(spectrum)
 plot_three(spectrum2, thresh=50)
