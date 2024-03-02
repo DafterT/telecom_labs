@@ -61,7 +61,7 @@ def run_speed_test(func, lengths, ys):
 def generate_ys(max_length=2**5):
     return np.random.uniform(-1, 1, max_length)
 # %%
-max_length = 13
+max_length = 15
 lengths = [2 ** i for i in range(5, max_length)]
 ys = generate_ys(lengths[-1])
 # %%
@@ -71,9 +71,19 @@ dft_res = run_speed_test(dft, lengths, ys)
 # %%
 my_fft_res = run_speed_test(my_fft, lengths, ys)
 # %%
-plt.plot(lengths, fft_res, label='fft')
-plt.plot(lengths, dft_res, label = 'dft')
-plt.plot(lengths, my_fft_res, label = 'my_fft')
+from scipy.stats import linregress
+
+def plot_speed_test(lengths, ys, label):
+    plt.plot(lengths, ys, label=label)
+    x = np.log(lengths)
+    y = np.log(ys)
+    t = linregress(x,y)
+    print(label, t[0])
+
+plot_speed_test(lengths, fft_res, 'fft')
+plot_speed_test(lengths, dft_res, 'dft')
+plot_speed_test(lengths, my_fft_res, 'my_fft')
+
 plt.legend()
 plt.xlabel('Len')
 plt.ylabel('Time (s)')
