@@ -9,7 +9,7 @@ def plot_filter(M=11, std=2):
     wave = signal.make_wave(duration=1, framerate=44100)
     spectrum = wave.make_spectrum()
 
-    gaussian = scipy.signal.gaussian(M=M, std=std)
+    gaussian = scipy.signal.windows.gaussian(M=M, std=std)
     gaussian /= sum(gaussian)
 
     ys = np.convolve(wave.ys, gaussian, mode='same')
@@ -38,4 +38,8 @@ import ipywidgets as widgets
 slider = widgets.IntSlider(min=2, max=100, value=11)
 slider2 = widgets.FloatSlider(min=0, max=20, value=2)
 interact(plot_filter, M=slider, std=slider2)
+# %%
+for i in np.arange(1, 5, step=1):
+    plt.title(f'std = {i}')
+    plot_filter(std=i)
 # %%
