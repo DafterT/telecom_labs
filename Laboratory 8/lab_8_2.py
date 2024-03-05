@@ -30,3 +30,6 @@ plot_gaussian(2)
 slider = widgets.FloatSlider(min=0.1, max=20, value=2)
 interact(plot_gaussian, std=slider)
 # %%
+for i in np.arange(1, 5, step=1):
+    plot_gaussian(std=i)
+# %%
