@@ -4,9 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy
 # %%
-signal = SquareSignal(freq=440)
-wave = signal.make_wave(duration=1.0, framerate=44100)
-# %%
 M = 15
 std = 2.5
 
@@ -29,7 +26,7 @@ decorate(xlabel='Index')
 # %%
 def plot_window_dfts(windows, names):
     for window, name in zip(windows, names):
-        padded =  zero_pad(window, len(wave))
+        padded =  zero_pad(window, 44100)
         dft_window = np.fft.rfft(padded)
         plt.plot(abs(dft_window), label=name)
 # %%
