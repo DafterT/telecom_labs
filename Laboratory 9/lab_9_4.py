@@ -1,5 +1,6 @@
 # %%
 from thinkdsp import SawtoothSignal, decorate
+import matplotlib.pyplot as plt
 # %%
 in_wave = SawtoothSignal(freq=50).make_wave(duration=0.1, framerate=44100)
 in_wave.plot()
@@ -20,4 +21,8 @@ out_wave2 = spectrum.make_wave()
 out_wave2.plot()
 decorate(xlabel='Time (s)')
 # %%
+in_wave.make_spectrum().plot(high=500)
+plt.show()
 out_wave.make_spectrum().plot(high=500)
+plt.show()
+# %%
