@@ -1,5 +1,5 @@
 # %%
-from thinkdsp import read_wave, decorate, zero_pad, Wave
+from thinkdsp import read_wave, decorate
 # %%
 # Open shot wave
 response = read_wave('180960__kleeb__gunshot.wav')
@@ -24,6 +24,13 @@ decorate(xlabel='Time (s)')
 # %%
 violin.make_audio()
 # %%
+transfer = response.make_spectrum()
+spectrum = violin.make_spectrum()
+output = (spectrum * transfer).make_wave()
+output.normalize()
+output.plot()
+output.make_audio()
+# %%
 response.zero_pad(len(response) * 2)
 violin.zero_pad(len(violin) * 2)
 # %%
@@ -35,4 +42,5 @@ transfer = response.make_spectrum()
 spectrum = violin.make_spectrum()
 output = (spectrum * transfer).make_wave()
 output.normalize()
+output.plot()
 output.make_audio()
