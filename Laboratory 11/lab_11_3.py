@@ -14,7 +14,6 @@ spectrum.plot()
 factor = 3
 framerate = wave.framerate / factor
 cutoff = framerate / 2 - 1
-# %%
 spectrum.low_pass(cutoff)
 spectrum.plot()
 # %%
@@ -35,15 +34,8 @@ sampled_spectrum.low_pass(cutoff)
 sampled_spectrum.plot()
 # %%
 sampled_spectrum.scale(factor)
-spectrum.plot()
-sampled_spectrum.plot()
-# %%
-spectrum.max_diff(sampled_spectrum)
-# %%
+display(spectrum.max_diff(sampled_spectrum))
 interpolated = sampled_spectrum.make_wave()
+display(filtered.max_diff(interpolated))
 interpolated.make_audio()
 # %%
-filtered.plot()
-interpolated.plot()
-# %%
-filtered.max_diff(interpolated)
