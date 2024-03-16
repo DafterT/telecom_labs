@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt]{extarticle}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[russian]{babel}
+%% Отступы
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+%% Картинки
+\usepackage{graphicx} % для картинок
+\graphicspath{{fig/}}
+
+%%Точки нумерации заголовков
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad}
+\usepackage[dotinlabels]{titletoc}
+
+%% Нумерация картинок по секциям
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+%% Ставим шрифт Times New Roman
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+%% Формат картинок
+\usepackage{subcaption}
+\DeclareCaptionLabelSeparator{custom}{. }
+\captionsetup {labelsep=custom}
+\addto\captionsrussian{\renewcommand{\figurename}{Рис.}}
+\usepackage[belowskip=2pt,aboveskip=2pt]{caption}
+\setlength{\intextsep}{2pt plus 1pt minus 1pt}
+
+%% Изменение отступов
+\renewcommand{\baselinestretch}{0}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{.5ex plus .5ex minus .5ex}{.5ex plus .5ex}
+\titlespacing*{\subsection}{0pt}{.5ex plus .5ex minus .5ex}{.5ex plus .5ex}
+
+%% Выравнивание без переносов
+\usepackage[none]{hyphenat}
+\sloppy
+
+%% Настройка нумерации
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagenumbering{arabic}
+
+%% Листинги
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstset{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codeblue},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}

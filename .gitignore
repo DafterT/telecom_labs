@@ -162,3 +162,11 @@ cython_debug/
 *.tmp
 # for testing without commit
 *.ipynb
+# for latex
+*.aux
+*.bbl
+*.fdb_latexmk
+*.fls
+*.gz
+*.xdv
+*.aux
