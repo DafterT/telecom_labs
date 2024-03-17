@@ -170,3 +170,4 @@ cython_debug/
 *.gz
 *.xdv
 *.aux
+*.toc
