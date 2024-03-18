@@ -1,4 +1,3 @@
-\documentclass[a4paper,12pt]{extarticle}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[russian]{babel}
@@ -38,6 +37,16 @@
 \usepackage{titlesec}
 \titlespacing*{\section}{0pt}{.5ex plus .5ex minus .5ex}{.5ex plus .5ex}
 \titlespacing*{\subsection}{0pt}{.5ex plus .5ex minus .5ex}{.5ex plus .5ex}
+
+%% Изменение оглавления
+\usepackage{titletoc}
+\titlecontents{section}[0.0cm]{}
+{\thecontentslabel\enspace}{}
+{{\titlerule*[1pc]{.}\contentspage}}
+\titlecontents{subsection}[.4cm]{}
+{\thecontentslabel\enspace}{}
+{{\titlerule*[1pc]{.}\contentspage}}
+
 
 %% Выравнивание без переносов
 \usepackage[none]{hyphenat}
