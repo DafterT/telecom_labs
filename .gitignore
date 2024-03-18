@@ -171,3 +171,4 @@ cython_debug/
 *.xdv
 *.aux
 *.toc
+*.out
