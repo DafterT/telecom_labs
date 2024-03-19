@@ -172,3 +172,5 @@ cython_debug/
 *.aux
 *.toc
 *.out
+# for vscode
+.vscode
